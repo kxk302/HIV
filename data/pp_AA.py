@@ -44,7 +44,8 @@ def main(in_file, out_file):
     rows = []
     for idx in range(num_cols):
         vc = df.iloc[:, idx].value_counts()
-        position = df.columns[idx]
+        # position starts from 1
+        position = df.columns[idx] + 1
         
         # 20 amino acids
         # Column order: A R N D C Q E G H I L K M F P S T W Y V
