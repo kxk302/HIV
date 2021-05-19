@@ -36,7 +36,8 @@ def main(in_file, ref_aa_file, out_file):
     print(in_df.head())    
     print(in_df.tail())    
 
-    in_df['Position'] = in_df['Position'].apply(lambda x: x - reduce_positions[x-1]).astype(int)
+    # Deduct 1 as the paper we use for comparison used 0 indexing
+    in_df['Position'] = in_df['Position'].apply(lambda x: x - reduce_positions[x-1] - 1).astype(int)
 
     print(in_df.head())    
     print(in_df.tail())    
