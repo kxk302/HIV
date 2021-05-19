@@ -27,7 +27,7 @@ def main(in_file, ref_aa_file, out_file):
         if ref_aa[idx] == '-':
             num_gaps = num_gaps + 1
         else:
-            reduce_positions[idx] += num_gaps 
+            reduce_positions[idx] = num_gaps 
 
     print("num_gaps: {}".format(num_gaps))
     print("reduce_positions: {}".format(reduce_positions))
@@ -36,7 +36,7 @@ def main(in_file, ref_aa_file, out_file):
     print(in_df.head())    
     print(in_df.tail())    
 
-    in_df['Position'] = in_df['Position'].apply(lambda x: x - reduce_positions[x]).astype(int)
+    in_df['Position'] = in_df['Position'].apply(lambda x: x - reduce_positions[x-1]).astype(int)
 
     print(in_df.head())    
     print(in_df.tail())    
